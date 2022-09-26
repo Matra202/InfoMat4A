@@ -26,7 +26,8 @@ Project File Date:  09/26/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Build target 'Sim'
+Rebuild target 'Sim'
+assembling startup_stm32f10x_md.s...
 compiling main.c...
 Source\main.c(32): error:  #268: declaration may not appear after executable statement in block
   MyGPIO_Struct_TypeDef MyGPIOC;
@@ -64,6 +65,8 @@ Source\main.c(44): error:  #169: expected a declaration
   }
 Source\main.c(46): warning: At end of source:  #12-D: parsing restarts here after previous syntax error
 Source\main.c: 3 warnings, 15 errors
+compiling system_stm32f10x.c...
+compiling gpio.c...
 ".\Objects\projet2_sim.axf" - 15 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -96,7 +99,7 @@ Package Vendor: Keil
       Source file:   Device\Source\ARM\startup_stm32f10x_md.s
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
 Target not created.
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
