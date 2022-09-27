@@ -23,10 +23,14 @@ void MyGPIO_Init ( MyGPIO_Struct_TypeDef * GPIOStructPtr ) {
 		else if (GPIOStructPtr->GPIO == GPIOG) {
 			RCC->APB2ENR = RCC_APB2ENR_IOPGEN;
 		} */
-		GPIOStructPtr->GPIO->CRH &= ~(0xF>>GPIOStructPtr->GPIO_Pin*4);
-		GPIOStructPtr->GPIO->CRH |= (GPIOStructPtr->GPIO_Pin << GPIOStructPtr->GPIO_Pin*4);
-		GPIOStructPtr->GPIO->CRL &= ~(0xF>>GPIOStructPtr->GPIO_Pin*4);
-		GPIOStructPtr->GPIO->CRL |= (GPIOStructPtr->GPIO_Conf << GPIOStructPtr->GPIO_Pin*4);
+		if (GPIOStructPtr->GPIO_Pin < 8) {
+			GPIOStructPtr->GPIO->CRL &= (~(0xF << GPIOStructPtr->GPIO_Pin*4));
+			GPIOStructPtr->GPIO->CRL |= (GPIOStructPtr->GPIO_Conf << GPIOStructPtr->GPIO_Pin*4);
+		}
+		else{
+			GPIOStructPtr->GPIO->CRH &= (~(0xF << (((GPIOStructPtr->GPIO_Pin)%8)*4)));
+			GPIOStructPtr->GPIO->CRH |= (GPIOStructPtr->GPIO_Conf << (((GPIOStructPtr->GPIO_Pin)%8)*4));
+		}
 }
 
 int MyGPIO_Read ( GPIO_TypeDef * GPIO , char GPIO_Pin ) {
@@ -34,7 +38,7 @@ int MyGPIO_Read ( GPIO_TypeDef * GPIO , char GPIO_Pin ) {
 }
 void MyGPIO_Set ( GPIO_TypeDef * GPIO , char GPIO_Pin ) {
 		GPIO->ODR &= (0xFFFF - (1 << GPIO_Pin));
-	  GPIO->ODR |= (0x1>>GPIO_Pin);
+	  GPIO->ODR |= (0x1 << GPIO_Pin);
 }
 
 void MyGPIO_Reset ( GPIO_TypeDef * GPIO , char GPIO_Pin ) {
