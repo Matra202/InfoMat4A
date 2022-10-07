@@ -14,6 +14,8 @@ typedef struct
 @Note > Fonction à lancer systématiquement avant d'aller plus en détail dans les conf plus fines (PWM, codeur inc...) */
 
 void MyTimer_Base_Init(MyTimer_Struct_TypeDef * Tim);
+void MyTimer_Active_IT ( TIM_TypeDef * Timer , char Prio ) ;
+
 #define MyTimer_Base_Start(Timr)(Timr ->CR1|=TIM_CR1_CEN) 
 #define MyTimer_Base_Stop(Timr)(Timr ->CR1 &= ~TIM_CR1_CEN)
 #endif

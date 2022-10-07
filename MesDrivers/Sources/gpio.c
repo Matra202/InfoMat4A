@@ -23,6 +23,8 @@ void MyGPIO_Init ( MyGPIO_Struct_TypeDef * GPIOStructPtr ) {
 		else if (GPIOStructPtr->GPIO == GPIOG) {
 			RCC->APB2ENR = RCC_APB2ENR_IOPGEN;
 		} */
+		else{
+		}
 		if (GPIOStructPtr->GPIO_Pin < 8) {
 			GPIOStructPtr->GPIO->CRL &= (~(0xF << GPIOStructPtr->GPIO_Pin*4));
 			GPIOStructPtr->GPIO->CRL |= (GPIOStructPtr->GPIO_Conf << GPIOStructPtr->GPIO_Pin*4);
