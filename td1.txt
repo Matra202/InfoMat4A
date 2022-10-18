@@ -27,3 +27,33 @@ recupInfosNonVitales (void) (return Struct DataNonVitale) Pas souvent ex. toutes
     printAllure (double angle) (return string)
     
 commXbee
+
+
+pour la girouette mettre en quadrature sur Timx_Ch1-2 ou ch 3-4 en input a la fin on doit avoir le nombre de fronts montants/descendants dans CNT 
+attention degré demi-degré ou quart 
+
+
+En priorité : 
+-Orientation du voilier/cap
+	rapport cyclique de pwm pour la vitesse 
+-Mesure Orientation du vent 
+	avec la girouette : A,B,Index 
+	2 Timx_Ch1-2 input avec le CNT
+-Bordage des voiles
+	PWM servomoteur 20ms de période et rapport cyclique de 5-10% 
+-Réception télécommande 
+	Xbee <-> Uart <-> STM32 tous les 100ms 0 à 100 gauche ou droite vitesse
+
+Ensuite : 
+-Mesure du niveau de batteries 	
+	ADC 
+-Transmissions informations (batterie + bordage)
+	UART
+-Système anti-chavirement
+	I2C
+-Horodateur
+	RTC avec I2C
+
+
+
+	

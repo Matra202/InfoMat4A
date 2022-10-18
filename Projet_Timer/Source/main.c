@@ -18,10 +18,10 @@ int main(void) {
 	
 	MyGPIOA.GPIO = GPIOA;
 	MyGPIOA.GPIO_Pin= 5;
-	MyGPIOA.GPIO_Conf=Out_Ppull;
+	MyGPIOA.GPIO_Conf=AltOut_Ppull;
 	MyGPIOAPWM.GPIO = GPIOA;
 	MyGPIOAPWM.GPIO_Pin= 7;
-	MyGPIOAPWM.GPIO_Conf=Out_Ppull;
+	MyGPIOAPWM.GPIO_Conf=AltOut_Ppull;
 
 	
 	MyGPIO_Init ( &MyGPIOAPWM ) ;
@@ -41,7 +41,7 @@ int main(void) {
 	
 	MyTimer_PWM( MonTimerPWM.Timer , 2 );
 	PWM_init(MonTimerPWM.Timer ,9999, 3599);
-	PWM_rapport( MonTimerPWM.Timer , 2, 50 ) ;
+	PWM_rapport( MonTimerPWM.Timer , 2,  10 ) ;
 //500ms = 1/72MHZ * (PSC + 1) * (ARR +1);
 	//36 000 000 = (PSC +1) * (ARR +1);
 	// PSC = 9999;
