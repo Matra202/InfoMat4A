@@ -1,0 +1,29 @@
+
+Struct Data {
+    double angle
+    u_int_8 sens
+}
+
+
+returnAngle giroutte et codeur incremental (void) (return double angle) 
+    ajusterPlateau : sens,PWM, moteur ,sens (int -100<x<100), vitesse ( int 0<x<100 )
+    returnAllure : largue, vent debout, arriere (double angle) (return string)
+ajusterVoile : IMU partie gyro et accelerometre , servo moteur (void)
+    recupInfo (void) (return Struct AllData) 
+    if (!testData) {
+        Ajuster : ouvrirVoile, fermerVoile,  
+                  ajusterPlateau sens (u_int_8 -100<x<100), vitesse ( int 0<x<100 )
+    }
+    
+ 
+ 
+recupInfo
+    returnAngle;
+    return 
+
+recupInfosNonVitales (void) (return Struct DataNonVitale) Pas souvent ex. toutes le minutes
+    returnHeure : RTC, I2C
+    mesureBatterie : ADC
+    printAllure (double angle) (return string)
+    
+commXbee
