@@ -35,14 +35,15 @@ attention degré demi-degré ou quart
 
 En priorité : 
 -Orientation du voilier/cap
-	rapport cyclique de pwm pour la vitesse 
+	rapport cyclique de pwm pour la vitesse T=50µs recommandé
+	GPIO pour le gauche droite 
 -Mesure Orientation du vent 
 	avec la girouette : A,B,Index 
-	2 Timx_Ch1-2 input avec le CNT
+	2 Timx_Ch1-2 input avec le CNT en mode codeur incrémental
 -Bordage des voiles
 	PWM servomoteur 20ms de période et rapport cyclique de 5-10% 
 -Réception télécommande 
-	Xbee <-> Uart <-> STM32 tous les 100ms 0 à 100 gauche ou droite vitesse
+	Xbee <-> Uart <-> STM32 tous les 100ms 0 à 100 gauche ou droite vitesse (2 broches une en réception et une sur la transmission)
 
 Ensuite : 
 -Mesure du niveau de batteries 	
@@ -50,10 +51,17 @@ Ensuite :
 -Transmissions informations (batterie + bordage)
 	UART
 -Système anti-chavirement
-	I2C
+	SPI 
 -Horodateur
 	RTC avec I2C
 
+problème de positionnement sur ADC, UART et I2C ; PWM où on veut
 
+//test c'est pas possible 
+TIM1 : bordage des voiles, système anti-chavirement
+TIM2 : Orientation du vent ch1-2, 
+TIM3 : Orientation du cap
+TIM4 : Mesure batterie, transmissions info, horodateur
+//
 
 	
